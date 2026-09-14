@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Portal - Dashboard</title>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header>
+    <div class="logo-container">
+      <!-- VIOLATION 1: Missing alt attribute on informational graphic -->
+      <img src="/assets/branding/company-logo.svg" width="180" height="40">
+    </div>
+
+    <nav>
+      <!-- Non-remediation content to verify whitespace and comment preservation -->
+      <ul>
+        <li><a href="/dashboard">Overview</a></li>
+        <li><a href="/analytics">Metrics</a></li>
+      </ul>
+    </nav>
+
+    <div class="user-actions">
+      <!-- VIOLATION 2: Interactive div missing role, tabindex, and keyboard event handlers -->
+      <div class="action-btn user-menu-trigger" onclick="toggleUserDropdown()">
+        <span>{{ user.name }}</span>
+        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+
+      <!-- VIOLATION 3: Icon-only interactive element with zero accessible text or aria-label -->
+      <button class="icon-button" onclick="openNotifications()">
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main id="main-content">
+    <section class="lead-summary">
+      <h1>Subscription Billing</h1>
+      <p>Manage your enterprise licensing tier and payment instruments below.</p>
+    </section>
+
+    <!-- Support Contact Widget -->
+    <section class="card support-card">
+      <h2>Need Help?</h2>
+      <p>Our engineers are on standby 24/7 to debug integration snags.</p>
+      <!-- VIOLATION 4: Ambiguous hyperlink text lacking descriptive context -->
+      <p>For custom security SLAs, please <a href="/enterprise/sla">click here</a>.</p>
+    </section>
+
+    <!-- Payment Instrument Form -->
+    <section class="card form-card">
+      <h2>Update Billing Details</h2>
+      <form id="billing-form" onsubmit="event.preventDefault(); submitPayment();">
+        
+        <div class="input-group">
+          <!-- VIOLATION 5: Input without an associated <label> or aria-label -->
+          <input type="text" id="cardholder-name" name="cardholder" placeholder="Cardholder Name">
+        </div>
+
+        <div class="input-group">
+          <!-- VIOLATION 6: Input field missing label and accessible name -->
+          <input type="text" id="billing-zip" name="zip" placeholder="Billing Postal Code">
+        </div>
+
+        <div class="form-actions">
+          <!-- VIOLATION 7: Non-semantic span tag masquerading as a form submission button -->
+          <span class="btn btn-primary submit-action" onclick="document.getElementById('billing-form').dispatchEvent(new Event('submit'))">
+            Confirm Changes
+          </span>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>
