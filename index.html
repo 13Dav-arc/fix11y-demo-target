@@ -9,8 +9,13 @@
   <!-- App Header -->
   <header>
     <div class="logo-container">
-      <!-- VIOLATION 1: Missing alt attribute on informational graphic -->
+      <!-- VIOLATION 1: Missing alt attribute on informational graphic (exercises 'meaningful' branch -> alt="Logo") -->
       <img src="/assets/branding/company-logo.svg" width="180" height="40">
+    </div>
+
+    <!-- VIOLATION 8: Decorative divider missing alt (exercises 'decorative' branch -> alt="", safe) -->
+    <div class="divider-wrapper">
+      <img src="/assets/dividers/section-divider.png" class="decorative-separator" width="100%" height="2">
     </div>
 
     <nav>
@@ -50,6 +55,15 @@
       <p>Our engineers are on standby 24/7 to debug integration snags.</p>
       <!-- VIOLATION 4: Ambiguous hyperlink text lacking descriptive context -->
       <p>For custom security SLAs, please <a href="/enterprise/sla">click here</a>.</p>
+    </section>
+
+    <!-- Content Asset with Zero Signals -->
+    <section class="card asset-card">
+      <h2>System Telemetry</h2>
+      <!-- VIOLATION 9: Content image with zero decorative or meaningful cues (exercises 'unknown' branch -> 0 auto-patches) -->
+      <div class="content-asset-container">
+        <img src="/assets/content/asset-48291.jpg" width="600" height="400">
+      </div>
     </section>
 
     <!-- Payment Instrument Form -->
