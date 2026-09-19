@@ -10,12 +10,12 @@
   <header>
     <div class="logo-container">
       <!-- VIOLATION 1: Missing alt attribute on informational graphic (exercises 'meaningful' branch -> alt="Logo") -->
-      <img src="/assets/branding/company-logo.svg" width="180" height="40">
+      <img src="/assets/branding/company-logo.svg" width="180" height="40" alt="Logo">
     </div>
 
     <!-- VIOLATION 8: Decorative divider missing alt (exercises 'decorative' branch -> alt="", safe) -->
     <div class="divider-wrapper">
-      <img src="/assets/dividers/section-divider.png" class="decorative-separator" width="100%" height="2">
+      <img src="/assets/dividers/section-divider.png" class="decorative-separator" width="100%" height="2" alt="">
     </div>
 
     <nav>
@@ -28,13 +28,13 @@
 
     <div class="user-actions">
       <!-- VIOLATION 2: Interactive div missing role, tabindex, and keyboard event handlers -->
-      <div class="action-btn user-menu-trigger" onclick="toggleUserDropdown()">
+      <button class="action-btn user-menu-trigger" onclick="toggleUserDropdown()" type="button">
         <span>{{ user.name }}</span>
         <svg viewBox="0 0 24 24" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
-      </div>
+      </button>
 
       <!-- VIOLATION 3: Icon-only interactive element with zero accessible text or aria-label -->
-      <button class="icon-button" onclick="openNotifications()">
+      <button class="icon-button" onclick="openNotifications()" aria-label="Notifications">
         <svg viewBox="0 0 24 24" width="20" height="20">
           <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
         </svg>
@@ -73,19 +73,19 @@
         
         <div class="input-group">
           <!-- VIOLATION 5: Input without an associated <label> or aria-label -->
-          <input type="text" id="cardholder-name" name="cardholder" placeholder="Cardholder Name">
+          <input type="text" id="cardholder-name" name="cardholder" placeholder="Cardholder Name" aria-label="Cardholder Name">
         </div>
 
         <div class="input-group">
           <!-- VIOLATION 6: Input field missing label and accessible name -->
-          <input type="text" id="billing-zip" name="zip" placeholder="Billing Postal Code">
+          <input type="text" id="billing-zip" name="zip" placeholder="Billing Postal Code" aria-label="Billing Postal Code">
         </div>
 
         <div class="form-actions">
           <!-- VIOLATION 7: Non-semantic span tag masquerading as a form submission button -->
-          <span class="btn btn-primary submit-action" onclick="document.getElementById('billing-form').dispatchEvent(new Event('submit'))">
+          <button class="btn btn-primary submit-action" onclick="document.getElementById('billing-form').dispatchEvent(new Event('submit'))" type="button">
             Confirm Changes
-          </span>
+          </button>
         </div>
 
       </form>
